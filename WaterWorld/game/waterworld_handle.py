@@ -4,25 +4,37 @@ from WaterWorld.game.implementations.ple.ple.games.waterworld import WaterWorld
 from WaterWorld.game.implementations.ple.ple.games.utils import percent_round_int
 from WaterWorld.game.implementations.ple.ple.games.utils.vec2d import vec2d
 
+import math
+
 
 class Sensor(pygame.sprite.Sprite):
     def __init__(self, init_position: vec2d, sensor_beam_len: float, sensor_beam_width: float, sensor_beam_angle: float):
         super().__init__()
-        self.image = pygame.Surface((sensor_beam_width, sensor_beam_len))
-        self.image.fill((255, 0, 0))
+        self.image = pygame.Surface((sensor_beam_len * 2, sensor_beam_len * 2))
+        self.image.set_colorkey((0, 0, 0))
+
         self.rect = self.image.get_rect()
-        self.rect.midbottom = (init_position.x, init_position.y)
+        self.rect.center = (init_position.x - sensor_beam_len, init_position.y - sensor_beam_len)
+        self.angle = sensor_beam_angle
 
-        self.image = pygame.transform.rotate(self.image, sensor_beam_angle)
-        current_x, current_y = self.rect.center
-        self.rect = self.image.get_rect()
-        self.rect.center = (current_x, current_y)
-        #self.image = pygame.transform.rotate(self.image, sensor_beam_angle)
+        self.start_x, self.start_y = sensor_beam_len, sensor_beam_len #init_position.x, init_position.y
+        self.sensor_beam_len, self.sensor_beam_width = sensor_beam_len, sensor_beam_width
+
+        self.mask = pygame.mask.from_surface(self.image)
 
 
-    def draw(self, screen) -> None:
+    def draw(self, screen, current_position: vec2d) -> None:
+        self.rect.center = (current_position.x - self.sensor_beam_len, current_position.y - self.sensor_beam_len)
+
+        target_x = self.start_x + math.cos(math.radians(self.angle)) * self.sensor_beam_len
+        target_y = self.start_y + math.sin(math.radians(self.angle)) * self.sensor_beam_len
+
+        self.image.fill(0)
+
+        pygame.draw.line(self.image, (255, 255, 0), (self.start_x, self.start_y), (target_x, target_y), self.sensor_beam_width)
+        self.mask = pygame.mask.from_surface(self.image)
+
         screen.blit(self.image, self.rect.center)
-
 
 
 class SensorArray:
@@ -37,9 +49,9 @@ class SensorArray:
             self.sensors.append(Sensor(init_position, self.sensor_beam_len, self.sensor_beam_width,
                                        (360 / self.nr_of_sensors) * position))
 
-    def draw(self, screen) -> None:
-        for sensor in [self.sensors[5]]:
-            sensor.draw(screen)
+    def draw(self, screen, current_position: vec2d) -> None:
+        for sensor in self.sensors:
+            sensor.draw(screen, current_position)
 
 
 
@@ -57,6 +69,6 @@ class WaterWorldHandle(WaterWorld):
 
     def external_step(self, dt) -> None:
         if self.sensor_array:
-            self.sensor_array.draw(self.screen)
+            self.sensor_array.draw(self.screen, self.player.pos)
 
 
