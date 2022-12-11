@@ -22,6 +22,8 @@ class Sensor(pygame.sprite.Sprite):
 
         self.mask = pygame.mask.from_surface(self.image)
 
+        self.sensor_magnitude = 0
+
     def draw(self, screen, current_position: vec2d) -> None:
         self.rect.center = (current_position.x - self.sensor_beam_len, current_position.y - self.sensor_beam_len)
 
@@ -30,7 +32,14 @@ class Sensor(pygame.sprite.Sprite):
 
         self.image.fill(0)
 
-        pygame.draw.line(self.image, (255, 255, 0), (self.start_x, self.start_y), (target_x, target_y), self.sensor_beam_width)
+        color = (255, 255, 0)
+
+        if self.sensor_magnitude > 0:
+            color = (0, max(50, 255 * abs(self.sensor_magnitude)), 0)
+        elif self.sensor_magnitude < 0:
+            color = (max(50, 255 * abs(self.sensor_magnitude)), 0, 0)
+
+        pygame.draw.line(self.image, color, (self.start_x, self.start_y), (target_x, target_y), int(self.sensor_beam_width))
         self.mask = pygame.mask.from_surface(self.image)
 
         screen.blit(self.image, self.rect.center)
@@ -48,19 +57,34 @@ class SensorArray:
             self.sensors.append(Sensor(init_position, self.sensor_beam_len, self.sensor_beam_width,
                                        (360 / self.nr_of_sensors) * position))
 
-    def compute_sensor_output(self, screen, creeps, current_position: vec2d) -> None:
+    def compute_sensor_output(self, screen, creeps, current_position: vec2d, agent_radius: float) -> None:
         for sensor in self.sensors:
 
             sensor.draw(screen, current_position)
 
+            creep_distances = []
             for creep in creeps:
                 offset_x = creep.rect.x - sensor.rect.center[0]
                 offset_y = creep.rect.y - sensor.rect.center[1]
 
                 overlap = sensor.mask.overlap(creep.mask, (offset_x, offset_y))
 
-                if overlap:
-                    print(creep.TYPE)
+                if not overlap:
+                    continue
+
+                distance = math.sqrt((current_position.x - creep.pos.x) ** 2 + (current_position.y - creep.pos.y) ** 2)
+                creep_distances.append((creep, distance))
+
+            if not creep_distances:
+                sensor.sensor_magnitude = 0
+                continue
+
+            min_creep, min_distance = min(creep_distances, key=lambda x: x[1])
+            normalized_distance = (max(0.0, min_distance - 2 * agent_radius)) / max(1.0, self.sensor_beam_len - 2 * agent_radius)
+
+            magnitude = math.exp(-normalized_distance)
+
+            sensor.sensor_magnitude = magnitude if min_creep.TYPE == "GOOD" else -magnitude
 
     def draw(self, screen, current_position: vec2d) -> None:
         for sensor in self.sensors:
@@ -81,7 +105,7 @@ class WaterWorldHandle(WaterWorld):
 
     def external_step(self, dt) -> None:
         if self.sensor_array:
-            self.sensor_array.compute_sensor_output(self.screen, self.creeps, self.player.pos)
+            self.sensor_array.compute_sensor_output(self.screen, self.creeps, self.player.pos, self.AGENT_RADIUS)
             self.sensor_array.draw(self.screen, self.player.pos)
 
 
