@@ -20,5 +20,5 @@ class WaterWorldGame:
 
 
 if __name__ == '__main__':
-    game = WaterWorldGame(1024, 1024, 20)
+    game = WaterWorldGame(1024, 1024, 2)
     game.run()

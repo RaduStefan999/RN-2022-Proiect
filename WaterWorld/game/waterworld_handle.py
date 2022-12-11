@@ -22,7 +22,6 @@ class Sensor(pygame.sprite.Sprite):
 
         self.mask = pygame.mask.from_surface(self.image)
 
-
     def draw(self, screen, current_position: vec2d) -> None:
         self.rect.center = (current_position.x - self.sensor_beam_len, current_position.y - self.sensor_beam_len)
 
@@ -49,10 +48,23 @@ class SensorArray:
             self.sensors.append(Sensor(init_position, self.sensor_beam_len, self.sensor_beam_width,
                                        (360 / self.nr_of_sensors) * position))
 
+    def compute_sensor_output(self, screen, creeps, current_position: vec2d) -> None:
+        for sensor in self.sensors:
+
+            sensor.draw(screen, current_position)
+
+            for creep in creeps:
+                offset_x = creep.rect.x - sensor.rect.center[0]
+                offset_y = creep.rect.y - sensor.rect.center[1]
+
+                overlap = sensor.mask.overlap(creep.mask, (offset_x, offset_y))
+
+                if overlap:
+                    print(creep.TYPE)
+
     def draw(self, screen, current_position: vec2d) -> None:
         for sensor in self.sensors:
             sensor.draw(screen, current_position)
-
 
 
 class WaterWorldHandle(WaterWorld):
@@ -69,6 +81,7 @@ class WaterWorldHandle(WaterWorld):
 
     def external_step(self, dt) -> None:
         if self.sensor_array:
+            self.sensor_array.compute_sensor_output(self.screen, self.creeps, self.player.pos)
             self.sensor_array.draw(self.screen, self.player.pos)
 
 
