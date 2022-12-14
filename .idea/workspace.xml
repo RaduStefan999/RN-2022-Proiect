@@ -4,9 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="21b2c101-848a-4aa3-9183-15dbe14bcbfb" name="Changes" comment="">
+    <list default="true" id="f26ea2bd-46c9-4646-954a-855ff24d0eb4" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WaterWorld/game/game_handle.py" beforeDir="false" afterPath="$PROJECT_DIR$/WaterWorld/game/game_handle.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WaterWorld/game/implementations/ple" beforeDir="false" afterPath="$PROJECT_DIR$/WaterWorld/game/implementations/ple" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WaterWorld/game/implementations/ple/ple/games/waterworld.py" beforeDir="false" afterPath="$PROJECT_DIR$/WaterWorld/game/implementations/ple/ple/games/waterworld.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WaterWorld/game/waterworld_handle.py" beforeDir="false" afterPath="$PROJECT_DIR$/WaterWorld/game/waterworld_handle.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -14,17 +16,11 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Python Script" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectId" id="2IiwmxCplkQymma8qwVchzGTHKz" />
+  <component name="ProjectId" id="2IuRz1qHLe03oi9oDSQtnwCjctn" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -39,8 +35,8 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
   </component>
-  <component name="RunManager" selected="Python.game_handle (1)">
-    <configuration name="game_handle (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+  <component name="RunManager">
+    <configuration name="game_handle" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="RN-2022-Proiect" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -62,100 +58,8 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="game_handle" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="RN-2022-Proiect" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/WaterWorld/game" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="D:\personal\Facultate\RN\Proiect\RN-2022-Proiect\WaterWorld\game\game_handle.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="keras_nonvis" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="RN-2022-Proiect" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/WaterWorld/ai" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/WaterWorld/ai/keras_nonvis.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="raycastmaze" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="RN-2022-Proiect" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/WaterWorld/game/implementations/ple/ple/games" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/WaterWorld/game/implementations/ple/ple/games/raycastmaze.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="water_world" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="RN-2022-Proiect" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/WaterWorld/game" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/WaterWorld/game/water_world.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.game_handle (1)" />
-        <item itemvalue="Python.raycastmaze" />
-        <item itemvalue="Python.keras_nonvis" />
-        <item itemvalue="Python.water_world" />
         <item itemvalue="Python.game_handle" />
       </list>
     </recent_temporary>
@@ -163,71 +67,21 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="21b2c101-848a-4aa3-9183-15dbe14bcbfb" name="Changes" comment="" />
-      <created>1670677874821</created>
+      <changelist id="f26ea2bd-46c9-4646-954a-855ff24d0eb4" name="Changes" comment="" />
+      <created>1671029741186</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1670677874821</updated>
-      <workItem from="1670677877008" duration="40742000" />
+      <updated>1671029741186</updated>
+      <workItem from="1671029742739" duration="2184000" />
+      <workItem from="1671055182069" duration="5154000" />
+      <workItem from="1671061503269" duration="342000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/WaterWorld/game/implementations/ple/ple/games/raycastmaze.py</url>
-          <line>245</line>
-          <option name="timeStamp" value="28" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
-    <watches-manager>
-      <configuration name="PythonConfigurationType">
-        <watch expression="state.values()" language="Python" />
-        <watch expression="list(state.values())" language="Python" />
-        <watch expression="[state.values()]" language="Python" />
-        <watch expression="state.flatten()" language="Python" />
-        <watch expression="state" language="Python" />
-        <watch expression="self.state_shape" language="Python" />
-        <watch expression="states" language="Python" />
-        <watch expression="epsilon - epsilon_rate" language="Python" />
-        <watch expression="np.max(epsilon_min, epsilon - epsilon_rate)" language="Python" />
-        <watch expression="epsilon_min" language="Python" />
-        <watch expression="max(epsilon_min, epsilon - epsilon_rate)" language="Python" />
-        <watch expression="state.values()" language="Python" />
-        <watch expression="elf.AGENT_INIT_POS" language="Python" />
-        <watch expression="sensor_beam_len" language="Python" />
-        <watch expression="sensor_beam_width" language="Python" />
-        <watch expression="(360 / self.nr_of_sensors) * position" language="Python" />
-        <watch expression="(360 / self.nr_of_sensors)" language="Python" />
-        <watch expression="(360 / self.nr_of_sensors) * position)" language="Python" />
-        <watch expression="(360 / self.nr_of_sensors) * position" language="Python" />
-        <watch expression="pygame.draw.line(self.screen, color, p0, p1, 3)" language="Python" />
-        <watch expression="dt" language="Python" />
-        <watch expression="current_creep" language="Python" />
-      </configuration>
-    </watches-manager>
-  </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/RN_2022_Proiect$water_world_game.coverage" NAME="water_world_game Coverage Results" MODIFIED="1670678351793" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/WaterWorld/game" />
-    <SUITE FILE_PATH="coverage/RN_2022_Proiect$raycastmaze.coverage" NAME="raycastmaze Coverage Results" MODIFIED="1670758736799" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/WaterWorld/game/implementations/ple/ple/games" />
-    <SUITE FILE_PATH="coverage/RN_2022_Proiect$water_world.coverage" NAME="water_world Coverage Results" MODIFIED="1670681971915" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/WaterWorld/game" />
-    <SUITE FILE_PATH="coverage/RN_2022_Proiect$keras_nonvis.coverage" NAME="keras_nonvis Coverage Results" MODIFIED="1670711820229" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/WaterWorld/ai" />
-    <SUITE FILE_PATH="coverage/RN_2022_Proiect$game_handle__1_.coverage" NAME="game_handle (1) Coverage Results" MODIFIED="1670778730794" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/WaterWorld/game" />
+    <SUITE FILE_PATH="coverage/RN_2022_Proiect$game_handle.coverage" NAME="game_handle Coverage Results" MODIFIED="1671061766126" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/WaterWorld/game" />
   </component>
 </project>

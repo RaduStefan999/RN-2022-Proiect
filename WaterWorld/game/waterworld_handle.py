@@ -7,6 +7,13 @@ from WaterWorld.game.implementations.ple.ple.games.utils.vec2d import vec2d
 import math
 
 
+class WaterWorldGameState:
+    def __init__(self, sensor_output: list, velocity: tuple, position: tuple):
+        self.sensor_output = sensor_output
+        self.velocity = velocity
+        self.position = position
+
+
 class Sensor(pygame.sprite.Sprite):
     def __init__(self, init_position: vec2d, sensor_beam_len: float, sensor_beam_width: float, sensor_beam_angle: float):
         super().__init__()
@@ -90,22 +97,41 @@ class SensorArray:
         for sensor in self.sensors:
             sensor.draw(screen, current_position)
 
+    def get_sensor_output(self) -> list:
+        sensor_magnitude_list = []
+        for sensor in self.sensors:
+            sensor_magnitude_list.append(sensor.sensor_magnitude)
+
+        return sensor_magnitude_list
+
+    def reset(self) -> None:
+        self.sensors = []
+
 
 class WaterWorldHandle(WaterWorld):
-    def __init__(self, width: int = 48, height: int = 48, num_creeps: int = 3, enable_sensors=False,
+    def __init__(self, width: int = 48, height: int = 48, num_creeps: int = 3, ai_player=False, enable_sensors=False,
                  sensor_beam_len_percentage: float = 0.17, sensor_beam_width_percentage: float = 0.005, nr_of_sensors: int = 12):
-        super().__init__(width, height, num_creeps)
+        super().__init__(width, height, num_creeps, ai_player)
 
         self.sensor_array = SensorArray(percent_round_int(width, sensor_beam_len_percentage),
                                         percent_round_int(width, sensor_beam_width_percentage),
                                         nr_of_sensors) if enable_sensors else None
 
     def external_init(self, init_position: tuple) -> None:
-        self.sensor_array.build(vec2d(init_position))
+        if self.sensor_array:
+            self.sensor_array.build(vec2d(init_position))
 
     def external_step(self, dt) -> None:
         if self.sensor_array:
             self.sensor_array.compute_sensor_output(self.screen, self.creeps, self.player.pos, self.AGENT_RADIUS)
             self.sensor_array.draw(self.screen, self.player.pos)
+
+    def reset(self) -> None:
+        if self.sensor_array:
+            self.sensor_array.reset()
+
+    def get_useful_game_state(self) -> WaterWorldGameState:
+        return WaterWorldGameState(self.sensor_array.get_sensor_output(), (self.player.vel.x, self.player.vel.y),
+                                   (self.player.pos.x, self.player.pos.y))
 
 
