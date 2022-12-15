@@ -8,10 +8,11 @@ import math
 
 
 class WaterWorldGameState:
-    def __init__(self, sensor_output: list, velocity: tuple, position: tuple):
+    def __init__(self, sensor_output: tuple, velocity: tuple, position: tuple, score: int):
         self.sensor_output = sensor_output
         self.velocity = velocity
         self.position = position
+        self.score = score
 
 
 class Sensor(pygame.sprite.Sprite):
@@ -97,12 +98,12 @@ class SensorArray:
         for sensor in self.sensors:
             sensor.draw(screen, current_position)
 
-    def get_sensor_output(self) -> list:
+    def get_sensor_output(self) -> tuple:
         sensor_magnitude_list = []
         for sensor in self.sensors:
             sensor_magnitude_list.append(sensor.sensor_magnitude)
 
-        return sensor_magnitude_list
+        return tuple(sensor_magnitude_list)
 
     def reset(self) -> None:
         self.sensors = []
@@ -110,7 +111,7 @@ class SensorArray:
 
 class WaterWorldHandle(WaterWorld):
     def __init__(self, width: int = 48, height: int = 48, num_creeps: int = 3, ai_player=False, enable_sensors=False,
-                 sensor_beam_len_percentage: float = 0.17, sensor_beam_width_percentage: float = 0.005, nr_of_sensors: int = 12):
+                 sensor_beam_len_percentage: float = 0.27, sensor_beam_width_percentage: float = 0.005, nr_of_sensors: int = 12):
         super().__init__(width, height, num_creeps, ai_player)
 
         self.sensor_array = SensorArray(percent_round_int(width, sensor_beam_len_percentage),
@@ -130,8 +131,10 @@ class WaterWorldHandle(WaterWorld):
         if self.sensor_array:
             self.sensor_array.reset()
 
+        self.init()
+
     def get_useful_game_state(self) -> WaterWorldGameState:
         return WaterWorldGameState(self.sensor_array.get_sensor_output(), (self.player.vel.x, self.player.vel.y),
-                                   (self.player.pos.x, self.player.pos.y))
+                                   (self.player.pos.x, self.player.pos.y), self.score)
 
 

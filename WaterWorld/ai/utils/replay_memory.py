@@ -2,61 +2,38 @@ import numpy as np
 from collections import deque
 
 
-class ReplayMemory:
-    def __init__(self, max_size: int, min_size: int):
-        self.min_replay_size = min_size
-        self.memory = deque(maxlen=max_size)
+class MemoryManager:
+    def __init__(self, min_capacity, max_capacity, bucket_size):
+        self.min_capacity = min_capacity
+        self.max_capacity = max_capacity
+        self.history_sars = deque(maxlen=max_capacity)
+        self.bucket_size = bucket_size
 
-    def __len__(self):
-        return len(self.memory)
+    def add(self, tuple_sars):
+        """add a sars in the history so we can learn in the future"""
+        self.history_sars.append(tuple_sars)
 
-    def add(self, transition):
-        self.memory.append(transition)
+    def enough_elements_to_learn(self) -> bool:
+        """verify if there is at least min_capacity in our bucket,
+        it should be higher than buckez_size so we get diversity"""
 
-    def train_agent_batch(self, agent):
-        if len(self.memory) > self.min_replay_size:
-            states, targets = self._random_batch(agent)  # get a random batch
-            return agent.model.train_on_batch(states, targets)  # ERR?
-        else:
-            return None
+        return len(self.history_sars) >= self.min_capacity
 
-    def _random_batch(self, agent):
-        inputs = np.zeros(agent.input_shape)
-        targets = np.zeros((agent.batch_size, agent.num_actions))
+    def get_bucket(self):
+        """returns bucket_size elements when called"""
+        size_history_elements = len(self.history_sars)
 
-        seen = []
-        idx = agent.rng.randint(
-            0,
-            high=len(
-                self.memory) -
-            agent.num_frames -
-            1)
+        if size_history_elements < self.bucket_size:
+            raise Exception("Pare rau nenea, nu avem elemente in buffer istorie pentru tine")
 
-        for i in range(agent.batch_size):
-            while idx in seen:
-                idx = agent.rng.randint(0, high=len(
-                    self.memory) - agent.num_frames - 1)
+        randomised_selection = np.random.choice(size_history_elements, size=self.bucket_size, replace=False)
+        selected_for_bucket = []
+        for selected in randomised_selection:
+            selected_for_bucket.append(self.history_sars[selected])
 
-            states = np.array([self.memory[idx + j][0]
-                               for j in range(agent.num_frames + 1)])
-            art = np.array([self.memory[idx + j][1:]
-                            for j in range(agent.num_frames)])
+        return np.array(selected_for_bucket)
 
-            actions = art[:, 0].astype(int)
-            rewards = art[:, 1]
-            terminals = art[:, 2]
-
-            state = states[:-1]
-            state_next = states[1:]
-
-            inputs[i, ...] = state.reshape(agent.state_shape)
-            # we could make zeros but pointless.
-            targets[i] = agent.predict_single(state)
-            Q_prime = np.max(agent.predict_single(state_next))
-
-            targets[i, actions] = rewards + \
-                (1 - terminals) * (agent.discount * Q_prime)
-
-            seen.append(idx)
-
-        return inputs, targets
+    def get_random_element_history(self):
+        """returns exactly one element"""
+        size_history_elements = len(self.history_sars)
+        return self.history_sars[np.random.randint(size_history_elements)] # the random element from history

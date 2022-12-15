@@ -12,6 +12,8 @@ class WaterWorldGame:
         self.nr_of_sensors = nr_of_sensors
 
         self.current_game = handle
+        self.fps = 0
+        self.display_screen = True
 
     def init_human_player(self):
         self.current_game = WaterWorldHandle(width=self.width, height=self.height, num_creeps=self.num_creeps, ai_player=False,
@@ -28,6 +30,8 @@ class WaterWorldGame:
         self.current_game.screen = pygame.display.set_mode(self.current_game.getScreenDims(), 0, 32)
         self.current_game.clock = pygame.time.Clock()
         self.current_game.rng = np.random.RandomState(24)
+        self.fps = 30
+        #self.display_screen = False
 
     def game_is_over(self) -> bool:
         return self.current_game.game_over()
@@ -45,12 +49,22 @@ class WaterWorldGame:
         self.__take_action(action, nr_of_frames)
         return self.get_game_state()
 
+    @staticmethod
+    def convert_game_state_to_tuple(game_state: WaterWorldGameState) -> tuple[tuple, tuple]:
+        return game_state.sensor_output, game_state.position
+
     def __take_action(self, action: str, nr_of_frames: int) -> None:
         if self.current_game.game_over():
             return
 
         for frame in range(nr_of_frames):
             self.current_game.set_ai_action(action)
+            delta_time = self.__tick()
+            self.current_game.step(delta_time)
+            pygame.display.update()
+
+    def __tick(self):
+        return self.current_game.tick(self.fps)
 
     def run_interactive(self):
         self.current_game.init()
