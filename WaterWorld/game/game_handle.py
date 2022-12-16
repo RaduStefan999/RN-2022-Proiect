@@ -30,7 +30,7 @@ class WaterWorldGame:
         self.current_game.screen = pygame.display.set_mode(self.current_game.getScreenDims(), 0, 32)
         self.current_game.clock = pygame.time.Clock()
         self.current_game.rng = np.random.RandomState(24)
-        self.fps = 30
+        self.fps = 24
         #self.display_screen = False
 
     def game_is_over(self) -> bool:

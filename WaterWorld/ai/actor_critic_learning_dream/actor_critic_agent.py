@@ -1,3 +1,6 @@
+import os.path
+
+import keras.models
 from keras import backend as backend
 from keras.layers import Dense, Input
 from keras.models import Model
@@ -23,6 +26,15 @@ class Agent:
 
     def build(self):
         self.actor_model, self.critic_model, self.policy = self.build_actor_critic_network()
+
+    def load(self, path: str):
+        self.actor_model, self.critic_model, self.policy = self.load_actor_critic_network(path)
+
+    @staticmethod
+    def load_actor_critic_network(path: str) -> tuple[Model, Model, Model]:
+        return keras.models.load_model(os.path.join(path, "actor_model")), \
+               keras.models.load_model(os.path.join(path, "critic_model")), \
+               keras.models.load_model(os.path.join(path, "policy_model"))
 
     def build_actor_critic_network(self) -> tuple[Model, Model, Model]:
         input_layer = Input(shape=self.input_dims)
@@ -64,3 +76,8 @@ class Agent:
 
         self.actor_model.fit(state, actions_on_hot)
         self.actor_model.fit(state, target)
+
+    def save_agent(self, path: str) -> None:
+        self.actor_model.save(os.path.join(path, "actor_model"))
+        self.critic_model.save(os.path.join(path, "critic_model"))
+        self.policy.save(os.path.join(path, "policy_model"))

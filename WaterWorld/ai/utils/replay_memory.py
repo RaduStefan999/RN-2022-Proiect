@@ -36,4 +36,10 @@ class MemoryManager:
     def get_random_element_history(self):
         """returns exactly one element"""
         size_history_elements = len(self.history_sars)
-        return self.history_sars[np.random.randint(size_history_elements)] # the random element from history
+
+        wanted_position = np.random.randint(size_history_elements)
+        wanted_item = self.history_sars[wanted_position]
+
+        del self.history_sars[wanted_position]
+
+        return wanted_item # the random element from history

@@ -111,7 +111,7 @@ class SensorArray:
 
 class WaterWorldHandle(WaterWorld):
     def __init__(self, width: int = 48, height: int = 48, num_creeps: int = 3, ai_player=False, enable_sensors=False,
-                 sensor_beam_len_percentage: float = 0.27, sensor_beam_width_percentage: float = 0.005, nr_of_sensors: int = 12):
+                 sensor_beam_len_percentage: float = 0.32, sensor_beam_width_percentage: float = 0.005, nr_of_sensors: int = 12):
         super().__init__(width, height, num_creeps, ai_player)
 
         self.sensor_array = SensorArray(percent_round_int(width, sensor_beam_len_percentage),
