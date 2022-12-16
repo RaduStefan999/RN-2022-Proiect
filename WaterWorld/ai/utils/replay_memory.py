@@ -1,4 +1,5 @@
 import numpy as np
+import copy
 from collections import deque
 
 
@@ -26,10 +27,18 @@ class MemoryManager:
         if size_history_elements < self.bucket_size:
             raise Exception("Pare rau nenea, nu avem elemente in buffer istorie pentru tine")
 
+        print("We have the len before selection :  ", len(self.history_sars))
+
         randomised_selection = np.random.choice(size_history_elements, size=self.bucket_size, replace=False)
+        randomised_selection = np.sort(randomised_selection)[::-1]
         selected_for_bucket = []
+        shallow_copy = copy.deepcopy(self.history_sars)
         for selected in randomised_selection:
             selected_for_bucket.append(self.history_sars[selected])
+            del shallow_copy[selected]
+            # print("Deleted something and we have the size : ",len(shallow_copy))
+        self.history_sars = shallow_copy
+        # print("We have the len after selection :  ", len(self.history_sars))
 
         return np.array(selected_for_bucket)
 

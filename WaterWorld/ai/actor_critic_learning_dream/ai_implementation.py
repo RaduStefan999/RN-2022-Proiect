@@ -37,7 +37,7 @@ def get_reward_from_states(lh_game_state: WaterWorldGameState, rh_game_state: Wa
 class AiImplementation:
     def __init__(self, nr_of_sensors: int, game_handle: WaterWorldGame = None):
         self.nr_of_sensors = nr_of_sensors
-        self.agent = Agent(0.0001, 0.0005, 0.99, 4, 1024, 512, nr_of_sensors + 2)
+        self.agent = Agent(0.0001, 0.0005, 0.75, 4, 1024, 512, nr_of_sensors + 2)
         self.game_handle = game_handle
 
         self.actions = {
@@ -56,8 +56,8 @@ class AiImplementation:
 
         memory_manager = MemoryManager(1000, 10000, 1)
 
-        nr_of_episodes = 6
-        nr_of_iterations_per_game = 300
+        nr_of_episodes = 10
+        nr_of_iterations_per_game = 600
 
         for it in range(nr_of_episodes):
             score = 0
@@ -96,7 +96,7 @@ class AiImplementation:
         self.agent.save_agent(path)
 
     def load(self, path: str) -> None:
-        self.game_handle = WaterWorldGame(256, 256, 10, self.nr_of_sensors)
+        self.game_handle = WaterWorldGame(256, 256, 20, self.nr_of_sensors)
         self.game_handle.init_ai_player()
         self.game_handle.reset_game()
 

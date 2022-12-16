@@ -15,6 +15,9 @@
       <change beforePath="$PROJECT_DIR$/SavedModels/policy_model/saved_model.pb" beforeDir="false" afterPath="$PROJECT_DIR$/SavedModels/policy_model/saved_model.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SavedModels/policy_model/variables/variables.data-00000-of-00001" beforeDir="false" afterPath="$PROJECT_DIR$/SavedModels/policy_model/variables/variables.data-00000-of-00001" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SavedModels/policy_model/variables/variables.index" beforeDir="false" afterPath="$PROJECT_DIR$/SavedModels/policy_model/variables/variables.index" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WaterWorld/ai/actor_critic_learning_dream/ai_implementation.py" beforeDir="false" afterPath="$PROJECT_DIR$/WaterWorld/ai/actor_critic_learning_dream/ai_implementation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WaterWorld/ai/q_learning_dream/q_learning_rn.py" beforeDir="false" afterPath="$PROJECT_DIR$/WaterWorld/ai/q_learning_dream/q_learning_rn.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WaterWorld/ai/utils/replay_memory.py" beforeDir="false" afterPath="$PROJECT_DIR$/WaterWorld/ai/utils/replay_memory.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,7 +50,7 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
   </component>
-  <component name="RunManager" selected="Python.ai_implementation">
+  <component name="RunManager" selected="Python.main">
     <configuration name="ai_implementation" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="RN-2022-Proiect" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -92,8 +95,31 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="RN-2022-Proiect" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.main" />
         <item itemvalue="Python.ai_implementation" />
         <item itemvalue="Python.game_handle" />
       </list>
@@ -111,7 +137,9 @@
       <workItem from="1671055182069" duration="5154000" />
       <workItem from="1671061503269" duration="10599000" />
       <workItem from="1671074044178" duration="1101000" />
-      <workItem from="1671130286231" duration="10092000" />
+      <workItem from="1671130286231" duration="10810000" />
+      <workItem from="1671173301371" duration="769000" />
+      <workItem from="1671174414616" duration="420000" />
     </task>
     <servers />
   </component>
@@ -143,7 +171,8 @@
     </watches-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/RN_2022_Proiect$ai_implementation.coverage" NAME="ai_implementation Coverage Results" MODIFIED="1671151368356" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/WaterWorld/ai/actor_critic_learning_dream" />
+    <SUITE FILE_PATH="coverage/RN_2022_Proiect$ai_implementation.coverage" NAME="ai_implementation Coverage Results" MODIFIED="1671174610609" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/WaterWorld/ai/actor_critic_learning_dream" />
+    <SUITE FILE_PATH="coverage/RN_2022_Proiect$main.coverage" NAME="main Coverage Results" MODIFIED="1671174767047" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/RN_2022_Proiect$game_handle.coverage" NAME="game_handle Coverage Results" MODIFIED="1671061766126" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/WaterWorld/game" />
   </component>
 </project>
