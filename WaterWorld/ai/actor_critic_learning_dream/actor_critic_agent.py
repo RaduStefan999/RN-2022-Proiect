@@ -75,7 +75,7 @@ class Agent:
         actions_on_hot[np.arange(1), action] = 1.0
 
         self.actor_model.fit(state, actions_on_hot)
-        self.actor_model.fit(state, target)
+        self.critic_model.fit(state, target)
 
     def save_agent(self, path: str) -> None:
         self.actor_model.save(os.path.join(path, "actor_model"))

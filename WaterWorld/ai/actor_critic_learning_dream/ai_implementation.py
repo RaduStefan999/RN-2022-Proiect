@@ -56,7 +56,7 @@ class AiImplementation:
 
         memory_manager = MemoryManager(1000, 10000, 1)
 
-        nr_of_episodes = 10
+        nr_of_episodes = 4
         nr_of_iterations_per_game = 600
 
         for it in range(nr_of_episodes):

@@ -9,5 +9,5 @@ if __name__ == '__main__':
 
 
     #ai_implementation = QNeuronalNetwork(24,0.3)
-    # ai_implementation.train("WaterWorld/Q_learning_models")
+    #ai_implementation.train("WaterWorld/Q_learning_models")
     #ai_implementation.play("WaterWorld/Q_learning_models")
